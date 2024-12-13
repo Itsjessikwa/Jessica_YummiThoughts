@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yummmi Thoughts</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to Yummi Thoughts!</h1>
+
+    <!-- Search Recipe Form -->
+    <form method="POST" action="/search_recipe">
+        <p>Search for a Recipe:</p>
+    <!-- Helps to guide the user by placing placeholder text -->
+        <input type="text" name="search_query" placeholder="Enter ingredient or recipe name">
+        <br>
+        <input type="submit" value="Search">
+    </form>
+
+    <!-- Create Recipe Form -->
+    <form method="POST" action="/create_recipe">
+        <p>Create a New Recipe Here!</p>
+        <input type="text" name="name" placeholder="Recipe Name" required>
+        <br>
+        <textarea name="recipe_info" placeholder="Recipe Information" required></textarea>
+        <br>
+        <input type="submit" value="Create Recipe">
+    </form>
+
+    <!-- Modify Recipe Form -->
+    <form method="POST" action="/modify_recipe">
+        <p>Modify an Existing Recipe Here!</p>
+        <input type="text" name="recipe_name" placeholder="Recipe Name" required>
+        <br>
+        <textarea name="new_info" placeholder="New Recipe Information" required></textarea>
+        <br>
+        <input type="submit" value="Modify Recipe">
+    </form>
+
+    <!-- Delete Recipe Form -->
+    <form method="POST" action="/delete_recipe">
+        <p>Delete a Recipe Here!</p>
+        <input type="text" name="recipe_name" placeholder="Recipe Name" required>
+        <br>
+        <input type="submit" value="Delete Recipe">
+    </form>
+
+    <!-- Display Existing Recipes -->
+    <h2>Existing Recipes</h2>
+    <ul>
+        {% for name, info in recipes.items() %}
+            <li><strong>{{ name }}</strong>: {{ info }}</li>
+        {% else %}
+            <p>No recipes available</p>
+        {% endfor %}
+    </ul>
+
+    <!-- Display Notes from Joplin API
+    <h2>Notes from Joplin</h2>
+    <ul>
+        {% for note in notes %}
+            <li>{{ note.title }}</li>
+        {% else %}
+            <li>No notes available.</li>
+        {% endfor %}
+    </ul> -->
+</body>
+</html>

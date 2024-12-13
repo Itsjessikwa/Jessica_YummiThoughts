@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+    {% if results %}
+        <ul>
+            {% for name, info in results.items() %}
+                <li><strong>{{ name }}</strong>: {{ info }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    <a href="{{ url_for('home') }}"><button>Go Back</button></a>
+</body>
+</html>

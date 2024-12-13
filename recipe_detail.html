@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} - Recipe Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Recipe: {{ name }}</h1>
+    <p>{{ info }}</p>
+    <a href="{{ url_for('home') }}"><button>Go Back</button></a>
+</body>
+</html>
